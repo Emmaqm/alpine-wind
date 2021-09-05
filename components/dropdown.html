@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown component</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Alpine trap plugin -->
+    <script defer src="https://unpkg.com/@alpinejs/trap@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>    
+</head>
+<body>
+    <main class="bg-gray-800 h-screen pl-40 pt-16">
+        <div x-data="{ open: false }" x-data='dropdown' x-trap="open" class="relative inline-block" @keyup.escape="open = false">
+
+            <!-- Open dropdown button -->
+            <button class="flex items-center text-sm text-gray-700 font-medium bg-white px-4 py-2 rounded-md border border-gray-100 shadow-sm" type="button" @click="open = !open">
+                Mi equipo
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <!-- Dropdown items -->
+            <div x-cloak x-show="open" @click.outside="open = false" x-transition class="absolute w-56 bg-white right-0 mt-2 rounded-md border border-gray-200 shadow-sm text-sm divide-y">
+                <div class="p-1">
+                    <button class="flex items-center w-full px-3 py-2 text-left text-gray-700 rounded-md hover:bg-gray-200" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                        </svg>
+                        Agregar
+                    </button>
+                    <button class="flex items-center w-full px-3 py-2 text-left text-gray-700 rounded-md hover:bg-gray-200" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                        Editar
+                    </button>
+                </div>
+                <div class="p-1">
+                    <button class="flex items-center w-full px-3 py-2 text-left text-red-600 rounded-md hover:bg-red-50" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
